@@ -1,60 +1,63 @@
-# Analyseur Syntaxique LL(1) – Mini langage C (Python)
+# Analyseur Syntaxique LL(1) – Mini-langage C (Python)
 
 ## 🚀 Présentation du projet
+Ce projet consiste à développer un **analyseur syntaxique descendant prédictif LL(1)** pour un mini-langage inspiré du C.  
+Réalisé dans le cadre d’un projet de compilation à l’Université de Limoges, il permet de :  
+- Vérifier la **validité syntaxique** d’un code source  
+- Générer un **arbre syntaxique interactif** via une interface graphique en Python (Tkinter)
 
-Ce projet est un **analyseur syntaxique LL(1)** pour un mini-langage inspiré du langage C, développé en **Python** avec une **interface graphique en Tkinter**.  
-Il prend en entrée une chaîne représentant un programme, vérifie sa validité syntaxique et génère **l’arbre syntaxique associé**.
-
-Au-delà de l’analyse syntaxique, ce projet met en avant :
-- la mise en œuvre d’algorithmes
-- l’utilisation de structures de données
-- la visualisation de structures complexes
-- la conception d’une application complète et interactive
+Au-delà de l’analyse syntaxique, ce projet met en avant :  
+- La mise en œuvre d’**algorithmes**  
+- L’utilisation de **structures de données**  
+- La **visualisation de structures complexes**  
+- La conception d’une **application complète et interactive**  
 
 ---
 
 ## 🧠 Fonctionnalités principales
+- Analyseur descendant prédictif **LL(1)**  
+- Vérification de la grammaire avec les ensembles **PREMIER et SUIVANT**  
+- Construction de la **table d’analyse syntaxique**  
+- Analyse pas à pas des règles de grammaire  
+- **Génération et affichage de l’arbre syntaxique**  
+- Zoom et déplacement pour gérer les arbres complexes  
+- Détection et gestion des **erreurs syntaxiques**  
 
-- Analyseur descendant prédictif **LL(1)**
-- Vérification de la grammaire à l’aide des ensembles **PREMIER et SUIVANT**
-- Implémentation de la table d’analyse syntaxique
-- Application pas à pas des règles de grammaire
-- **Génération et affichage de l’arbre syntaxique**
-- Gestion du zoom et du déplacement pour les arbres complexes
-- Détection et gestion des erreurs syntaxiques
+---
+
+## 📚 Fondements théoriques
+L’analyse repose sur une **grammaire validée LL(1)** :  
+- **Analyse LL(1)** : grammaire sans conflits, analyse déterministe  
+- **Ensembles PREMIER et SUIVANT** :  
+  - `PREMIER` identifie les terminaux par lesquels commence un non-terminal  
+  - `SUIVANT` détermine quels symboles peuvent apparaître après un non-terminal, y compris les règles vides (ε)  
+- **Table d’analyse syntaxique** : associe chaque couple `(non-terminal, terminal)` à la production adéquate (16 règles)  
 
 ---
 
-🧠 Fondements Théoriques:
-Le moteur de l'analyse repose sur une grammaire rigoureusement validée :
-Analyse LL(1) : La grammaire a été vérifiée manuellement pour garantir l'absence de conflits, permettant une analyse déterministe
-Ensembles PREMIER et SUIVANT : Le calcul de ces ensembles a permis de construire une table d'analyse précise
-Les PREMIER identifient les terminaux par lesquels commence un non-terminal.
-Les SUIVANT déterminent quels symboles peuvent apparaître après un non-terminal, gérant ainsi les règles vides ($\epsilon$)
-6.Table d'Analyse :
-Une structure de 16 règles numérotées guide l'algorithme pour associer chaque couple (non-terminal, terminal) à la production adéquate
-
----
 ## 🧩 Spécification du langage
+Le langage supporte :  
+- Déclaration de variables (`int`, `float`)  
+- Affectation de valeurs  
+- Structures conditionnelles (`if / else`)  
 
-Le langage pris en charge permet :
-- la déclaration de variables (`int`, `float`)
-- l’affectation de valeurs
-- les structures conditionnelles (`if / else`)
+**Extrait simplifié de la grammaire :**
 
-Extrait simplifié de la grammaire :
+```bnf
 
-Programme → main() { Déclarations Instructions }   <br>
-Déclarations → Déclaration Déclarations | ε        <br>
-Déclaration → Type id                        <br>
-Instructions → Instruction Instructions | ε    <br>
-Instruction → Affectation | Test              <br>
-Affectation → id = nombre ;                  <br>
-Test → if Condition Instruction else Instruction    <br>
-Condition → id Opérateur nombre                 <br>
-Opérateur → < | > | ==                    <br>
-<br>
+Programme          → main(){ Liste_declarations Liste_instructions }
+Liste_declarations → Une_declaration Liste_declarations | vide
+Une_declaration    → Type id
+Liste_instructions → Une_instruction Liste_instructions | vide
+Une_instruction    → Affectation | Test
+Type               → int | float
+Affectation        → id = nombre ;
+Test               → if Condition Une_instruction else Une_instruction ;
+Condition          → id Operation nombre
+Operation          → < | > | ==
 
+
+```
 La grammaire a été validée comme étant **LL(1)**, garantissant une analyse déterministe sans ambiguïté.
 
 ---
@@ -95,6 +98,12 @@ Chaîne Valide : main(){ int id; id=nombre; } (Acceptée par l'analyseur).
 Chaîne Invalide : main(){ int id = nombre (Rejetée pour cause de symboles manquants ou mal formés).
 Ce projet peut servir à la fois d’**outil pédagogique** et de **démonstration technique**.
 
+
+---
+
+## ▶️ Apperçu
+# ![Fatimatou](https://github.com/Fatimatou-DIALLO-87/Analyseur_syntaxiqye/blob/master/analyseur.gif)
+
 ---
 
 ## 🛠️ Technologies utilisées
@@ -103,9 +112,3 @@ Ce projet peut servir à la fois d’**outil pédagogique** et de **démonstrati
 - **Tkinter**
 - Structures de données (pile, arbre, dictionnaires)
 - Théorie de la compilation (LL(1), PREMIER / SUIVANT)
-
----
-
-## ▶️ Apperçu
-# ![Fatimatou](https://github.com/Fatimatou-DIALLO-87/Analyseur_syntaxiqye/blob/master/analyseur.gif)
-
