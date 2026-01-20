@@ -102,9 +102,10 @@ Ce projet peut servir à la fois d’**outil pédagogique** et de **démonstrati
 ---
 
 ## ▶️ Apperçu
-<img src="https://github.com/Fatimatou-DIALLO-87/Analyseur_syntaxiqye/blob/master/analyseur.gif" width="300">
 
----
+<p align="center">
+  <img src="https://github.com/Fatimatou-DIALLO-87/Analyseur_syntaxiqye/blob/master/analyseur.gif" width="500">
+</p>
 
 ## 🛠️ Technologies utilisées
 
